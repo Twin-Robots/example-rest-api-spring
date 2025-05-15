@@ -21,7 +21,7 @@ class PostController(
     @PostMapping
     fun createPost(@RequestBody post: CreatePost): ResponseEntity<Post> {
         val body = service.createPost(post).toPost()
-        return ResponseEntity.created(URI("/posts/")).body(body)
+        return ResponseEntity.created(URI("/posts/${body.postId}")).body(body)
     }
 
     @GetMapping("/{postId}")
